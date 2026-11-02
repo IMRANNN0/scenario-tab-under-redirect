@@ -12,6 +12,23 @@ Or paste this prompt into Codex to install all seven skills from this repository
 Use $skill-installer to install all seven skills from https://github.com/IMRANNN0/scenario-tab-under-redirect: affiliate-funnel-orchestrator, cloudflare-verification, cookie-manager, funnel-qa, gotooffer-tracking, offer-tab-router, and swipe-interaction. Each skill is under .agents/skills/<skill-name>. After installation, tell me to start a new Codex chat.
 ```
 
+## Claude Code
+
+In Claude Code, paste this prompt:
+
+```text
+Clone https://github.com/IMRANNN0/scenario-tab-under-redirect to a temporary folder.
+Install the seven skills for my user by running node scripts/install-claude-skills.mjs --user
+from the cloned repository. Do not overwrite any existing skills. Tell me how to
+start a new Claude Code session and find the skills with /skills.
+```
+
+The installer requires Node.js and Git. For one project only, run it with `--project` from that project's root using the install script's path. To invoke a skill in Claude Code, use e.g. `/gotooffer-tracking`. Claude Code discovers the personal and project skill directories described in its [skills documentation](https://code.claude.com/docs/en/skills).
+
+## Claude web and desktop
+
+Download [the Claude upload bundle](releases/affiliate-funnel-claude.zip). In Claude, enable file creation/code execution if needed, go to **Customize > Skills**, choose **Create skill > Upload a skill**, and upload the ZIP. This creates one combined `affiliate-funnel-claude` skill that contains all seven component workflows. The bundle contains instructions and examples; access to local projects and tools depends on the Claude environment. See [Claude's skill upload guide](https://support.claude.com/en/articles/12512180-use-skills-in-claude).
+
 | Skill | Job |
 |---|---|
 | $cookie-manager | Cookie lifecycle and optional returning-browser recognition |
