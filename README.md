@@ -18,10 +18,10 @@ To use them in another project, copy the seven skill directories into that proje
 
 Example: $affiliate-funnel-orchestrator Build the full affiliate funnel using the required specialized skills. Keep it local until I authorize deployment.
 
-[Full usage and examples](.agents/skills/README.md)  
-[Integration contracts](.agents/skills/affiliate-funnel-orchestrator/references/contracts.md)  
-[Validation and limitations](.agents/skills/VALIDATION.md)  
-[Complete file tree](FILE_TREE.txt)
+- [Full usage and examples](.agents/skills/README.md)
+- [Integration contracts](.agents/skills/affiliate-funnel-orchestrator/references/contracts.md)
+- [Validation and limitations](.agents/skills/VALIDATION.md)
+- [Complete file tree](FILE_TREE.txt)
 
 ## Reproduce
 ~~~sh
