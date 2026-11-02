@@ -1,0 +1,4 @@
+interface:
+  display_name: "Affiliate Funnel Orchestrator"
+  short_description: "Coordinate modular affiliate funnel components"
+  default_prompt: "Use $affiliate-funnel-orchestrator to build the full affiliate funnel using the required skills."

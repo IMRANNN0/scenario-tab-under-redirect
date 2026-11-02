@@ -1,0 +1,4 @@
+interface:
+  display_name: "Cookie Manager"
+  short_description: "Cookie lifecycle and returning-browser support"
+  default_prompt: "Use $cookie-manager to add cookie support for returning visitors."

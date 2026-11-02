@@ -1,0 +1,62 @@
+{
+  "official_validator": "Installed skill-creator/scripts/quick_validate.py",
+  "results": [
+    {
+      "skill": "cookie-manager",
+      "official": "PASS",
+      "detail": "Skill is valid!",
+      "references": "PASS",
+      "missing": [],
+      "metadata": "PASS"
+    },
+    {
+      "skill": "gotooffer-tracking",
+      "official": "PASS",
+      "detail": "Skill is valid!",
+      "references": "PASS",
+      "missing": [],
+      "metadata": "PASS"
+    },
+    {
+      "skill": "swipe-interaction",
+      "official": "PASS",
+      "detail": "Skill is valid!",
+      "references": "PASS",
+      "missing": [],
+      "metadata": "PASS"
+    },
+    {
+      "skill": "cloudflare-verification",
+      "official": "PASS",
+      "detail": "Skill is valid!",
+      "references": "PASS",
+      "missing": [],
+      "metadata": "PASS"
+    },
+    {
+      "skill": "offer-tab-router",
+      "official": "PASS",
+      "detail": "Skill is valid!",
+      "references": "PASS",
+      "missing": [],
+      "metadata": "PASS"
+    },
+    {
+      "skill": "funnel-qa",
+      "official": "PASS",
+      "detail": "Skill is valid!",
+      "references": "PASS",
+      "missing": [],
+      "metadata": "PASS"
+    },
+    {
+      "skill": "affiliate-funnel-orchestrator",
+      "official": "PASS",
+      "detail": "Skill is valid!",
+      "references": "PASS",
+      "missing": [],
+      "metadata": "PASS"
+    }
+  ],
+  "note": "Official frontmatter validation does not establish runtime or behavioral correctness."
+}

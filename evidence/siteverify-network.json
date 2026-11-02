@@ -1,0 +1,30 @@
+{
+  "type": "official dummy-key Siteverify network probe; not production widget verification",
+  "results": [
+    {
+      "name": "pass",
+      "status": "PASS",
+      "httpStatus": 200,
+      "success": true,
+      "errorCodes": []
+    },
+    {
+      "name": "fail",
+      "status": "PASS",
+      "httpStatus": 200,
+      "success": false,
+      "errorCodes": [
+        "invalid-input-response"
+      ]
+    },
+    {
+      "name": "spent",
+      "status": "PASS",
+      "httpStatus": 200,
+      "success": false,
+      "errorCodes": [
+        "timeout-or-duplicate"
+      ]
+    }
+  ]
+}

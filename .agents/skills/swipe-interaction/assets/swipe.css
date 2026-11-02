@@ -1,0 +1,10 @@
+/* Utility component: inherits the approved page's type and color tokens. */
+[data-swipe] { font: inherit; max-inline-size: 34rem; color: var(--swipe-ink, #17212b); }
+[data-swipe] label { display: block; margin-block-end: .75rem; }
+[data-swipe] input { display: block; box-sizing: border-box; inline-size: 100%; min-block-size: 48px; accent-color: var(--swipe-accent, #14614a); touch-action: pan-y; }
+[data-swipe] button { font: inherit; min-block-size: 48px; padding: .75rem 1rem; margin-block-start: .75rem; border: 2px solid currentColor; background: var(--swipe-paper, #fff); color: inherit; cursor: pointer; }
+[data-swipe] button:disabled { cursor: default; opacity: .65; }
+[data-swipe] :focus-visible { outline: 3px solid var(--swipe-accent, #14614a); outline-offset: 4px; }
+[data-swipe-status] { min-block-size: 1.5em; }
+@media (max-width: 420px) { [data-swipe] button { inline-size: 100%; } }
+@media (prefers-reduced-motion: reduce) { [data-swipe] * { animation: none !important; transition: none !important; } }

@@ -1,0 +1,11 @@
+/* Direction: developer test utility; no marketing or security impersonation. */
+:root {color-scheme:light;--swipe-ink:#17212b;--swipe-accent:#14614a;--swipe-paper:#fff}
+body{margin:0;background:#f7f7f2;color:#17212b;font:18px/1.55 system-ui,sans-serif}
+main{max-inline-size:50rem;margin:0 auto;padding:clamp(20px,5vw,64px)}
+h1{font-size:clamp(28px,5vw,44px);line-height:1.15}h2{font-size:24px}
+.eyebrow{font-size:14px;text-transform:uppercase;letter-spacing:.08em}
+a,button{font:inherit}#cta{display:inline-block;background:#14614a;color:#fff;padding:14px 24px}
+button{min-block-size:48px;padding:10px 18px;margin-block:8px}input[type=checkbox]{inline-size:22px;block-size:22px;vertical-align:middle}
+dialog{box-sizing:border-box;inline-size:min(38rem,calc(100% - 32px));max-block-size:calc(100dvh - 32px);padding:24px;overflow:auto;border:2px solid #17212b}
+dialog::backdrop{background:rgb(0 0 0 / .4)}:focus-visible{outline:3px solid #14614a;outline-offset:4px}
+pre{white-space:pre-wrap;overflow-wrap:anywhere;font-size:14px}[hidden]{display:none!important}

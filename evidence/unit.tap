@@ -1,0 +1,256 @@
+TAP version 13
+# Subtest: validated status is server-side; q=yes or forged IDs grant nothing
+ok 1 - validated status is server-side; q=yes or forged IDs grant nothing
+  ---
+  duration_ms: 23.5178
+  type: 'test'
+  ...
+# Subtest: server expiry and logout invalidate sessions
+ok 2 - server expiry and logout invalidate sessions
+  ---
+  duration_ms: 1.1721
+  type: 'test'
+  ...
+# Subtest: successful re-verification rotates the session ID
+ok 3 - successful re-verification rotates the session ID
+  ---
+  duration_ms: 1.2968
+  type: 'test'
+  ...
+# Subtest: origin and invalid tokens are rejected before Siteverify
+ok 4 - origin and invalid tokens are rejected before Siteverify
+  ---
+  duration_ms: 0.3169
+  type: 'test'
+  ...
+# Subtest: rejects Siteverify mismatch {"success":false}
+ok 5 - rejects Siteverify mismatch {"success":false}
+  ---
+  duration_ms: 0.5289
+  type: 'test'
+  ...
+# Subtest: rejects Siteverify mismatch {"success":"true","hostname":"example.test","action":"offer"}
+ok 6 - rejects Siteverify mismatch {"success":"true","hostname":"example.test","action":"offer"}
+  ---
+  duration_ms: 0.5467
+  type: 'test'
+  ...
+# Subtest: rejects Siteverify mismatch {"success":true,"hostname":"evil.test","action":"offer"}
+ok 7 - rejects Siteverify mismatch {"success":true,"hostname":"evil.test","action":"offer"}
+  ---
+  duration_ms: 0.4355
+  type: 'test'
+  ...
+# Subtest: rejects Siteverify mismatch {"success":true,"hostname":"example.test","action":"wrong"}
+ok 8 - rejects Siteverify mismatch {"success":true,"hostname":"example.test","action":"wrong"}
+  ---
+  duration_ms: 1.1785
+  type: 'test'
+  ...
+# Subtest: network retry is bounded and uses the same idempotency key
+ok 9 - network retry is bounded and uses the same idempotency key
+  ---
+  duration_ms: 1.5287
+  type: 'test'
+  ...
+# Subtest: timeout fails closed and is bounded
+ok 10 - timeout fails closed and is bounded
+  ---
+  duration_ms: 7.0954
+  type: 'test'
+  ...
+# Subtest: replayed token rejected by Siteverify cannot create another session
+ok 11 - replayed token rejected by Siteverify cannot create another session
+  ---
+  duration_ms: 0.9842
+  type: 'test'
+  ...
+# Subtest: malformed response, store failure and duplicate session cookies fail closed
+ok 12 - malformed response, store failure and duplicate session cookies fail closed
+  ---
+  duration_ms: 0.8014
+  type: 'test'
+  ...
+# Subtest: client verification lifecycle confirms session, resets and handles retry/expired/timeout
+ok 13 - client verification lifecycle confirms session, resets and handles retry/expired/timeout
+  ---
+  duration_ms: 1.2275
+  type: 'test'
+  ...
+# Subtest: client rejects server pass without a cookie round trip
+ok 14 - client rejects server pass without a cookie round trip
+  ---
+  duration_ms: 0.3731
+  type: 'test'
+  ...
+# Subtest: cookie CRUD, encoding and explicit deletion
+ok 15 - cookie CRUD, encoding and explicit deletion
+  ---
+  duration_ms: 1.1814
+  type: 'test'
+  ...
+# Subtest: new/returning recognition preserves ID
+ok 16 - new/returning recognition preserves ID
+  ---
+  duration_ms: 1.0564
+  type: 'test'
+  ...
+# Subtest: denied consent creates no cookie
+ok 17 - denied consent creates no cookie
+  ---
+  duration_ms: 0.1389
+  type: 'test'
+  ...
+# Subtest: disabled storage reports unavailable, not a returning visitor
+ok 18 - disabled storage reports unavailable, not a returning visitor
+  ---
+  duration_ms: 0.182
+  type: 'test'
+  ...
+# Subtest: blocked cookie getter does not crash recognition
+ok 19 - blocked cookie getter does not crash recognition
+  ---
+  duration_ms: 0.2578
+  type: 'test'
+  ...
+# Subtest: session cookie and custom retention settings
+ok 20 - session cookie and custom retention settings
+  ---
+  duration_ms: 0.3677
+  type: 'test'
+  ...
+# Subtest: expire explicitly ends a cookie lifetime
+ok 21 - expire explicitly ends a cookie lifetime
+  ---
+  duration_ms: 0.2324
+  type: 'test'
+  ...
+# Subtest: secure cookie invariants reject bad config
+ok 22 - secure cookie invariants reject bad config
+  ---
+  duration_ms: 0.5587
+  type: 'test'
+  ...
+# Subtest: HttpOnly is server-only, malformed cookie is not trusted
+ok 23 - HttpOnly is server-only, malformed cookie is not trusted
+  ---
+  duration_ms: 0.1955
+  type: 'test'
+  ...
+# Subtest: new tab retains tracker URL and only then requests B
+ok 24 - new tab retains tracker URL and only then requests B
+  ---
+  duration_ms: 2.0976
+  type: 'test'
+  ...
+# Subtest: popup blocked uses same-tab offer without B
+ok 25 - popup blocked uses same-tab offer without B
+  ---
+  duration_ms: 0.1966
+  type: 'test'
+  ...
+# Subtest: a distinct genuine action can open another offer while the same ID cannot
+ok 26 - a distinct genuine action can open another offer while the same ID cannot
+  ---
+  duration_ms: 0.1846
+  type: 'test'
+  ...
+# Subtest: B navigation failure does not permit a duplicate offer for the same action
+ok 27 - B navigation failure does not permit a duplicate offer for the same action
+  ---
+  duration_ms: 0.1707
+  type: 'test'
+  ...
+# Subtest: same-tab mode and no-B option work independently
+ok 28 - same-tab mode and no-B option work independently
+  ---
+  duration_ms: 0.2161
+  type: 'test'
+  ...
+# Subtest: programmatic/modifier activations do not hijack navigation
+ok 29 - programmatic/modifier activations do not hijack navigation
+  ---
+  duration_ms: 0.3026
+  type: 'test'
+  ...
+# Subtest: tracking exceptions do not block route and navigation failure is explicit
+ok 30 - tracking exceptions do not block route and navigation failure is explicit
+  ---
+  duration_ms: 0.2884
+  type: 'test'
+  ...
+# Subtest: invalid destinations and cross-origin B fail before opening
+ok 31 - invalid destinations and cross-origin B fail before opening
+  ---
+  duration_ms: 0.502
+  type: 'test'
+  ...
+# Subtest: one dispatch per action, wrong trigger and distinct action
+ok 32 - one dispatch per action, wrong trigger and distinct action
+  ---
+  duration_ms: 1.7153
+  type: 'test'
+  ...
+# Subtest: consent denial, revocation and eligibility suppress dispatch
+ok 33 - consent denial, revocation and eligibility suppress dispatch
+  ---
+  duration_ms: 0.4965
+  type: 'test'
+  ...
+# Subtest: Meta custom event uses specific Pixel and stable eventID
+ok 34 - Meta custom event uses specific Pixel and stable eventID
+  ---
+  duration_ms: 0.721
+  type: 'test'
+  ...
+# Subtest: missing or failing SDK permits a retry of same action ID
+ok 35 - missing or failing SDK permits a retry of same action ID
+  ---
+  duration_ms: 0.2317
+  type: 'test'
+  ...
+# Subtest: event payload cannot override reserved event or ID
+ok 36 - event payload cannot override reserved event or ID
+  ---
+  duration_ms: 0.155
+  type: 'test'
+  ...
+# Subtest: reentrant dispatch cannot double-send
+ok 37 - reentrant dispatch cannot double-send
+  ---
+  duration_ms: 0.1586
+  type: 'test'
+  ...
+# Subtest: failing consent/eligibility callbacks fail closed without throwing
+ok 38 - failing consent/eligibility callbacks fail closed without throwing
+  ---
+  duration_ms: 0.204
+  type: 'test'
+  ...
+# Subtest: browser OS eligibility fails closed on unknown/conflicting signals
+ok 39 - browser OS eligibility fails closed on unknown/conflicting signals
+  ---
+  duration_ms: 0.3042
+  type: 'test'
+  ...
+# Subtest: disabled transport and required configuration
+ok 40 - disabled transport and required configuration
+  ---
+  duration_ms: 0.5532
+  type: 'test'
+  ...
+# Subtest: base SDK loaders send nothing without consent and initialize once when configured
+ok 41 - base SDK loaders send nothing without consent and initialize once when configured
+  ---
+  duration_ms: 0.8994
+  type: 'test'
+  ...
+1..41
+# tests 41
+# suites 0
+# pass 41
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 131.3028

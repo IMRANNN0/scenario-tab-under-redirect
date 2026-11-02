@@ -1,0 +1,108 @@
+{
+  "status": "PASS",
+  "engine": "Chromium",
+  "verification": "local mock; no real challenge",
+  "cases": 18,
+  "passed": 18,
+  "results": [
+    {
+      "name": "desktop button new tab B and no reload duplicates",
+      "status": "PASS",
+      "screenshot": "desktop-button-new-tab-b-and-no-reload-duplicates.png"
+    },
+    {
+      "name": "desktop completed pointer swipe",
+      "status": "PASS",
+      "screenshot": "desktop-completed-pointer-swipe.png"
+    },
+    {
+      "name": "keyboard range and offer navigation",
+      "status": "PASS",
+      "screenshot": "keyboard-range-and-offer-navigation.png"
+    },
+    {
+      "name": "keyboard arrow increments accumulate",
+      "status": "PASS",
+      "screenshot": "keyboard-arrow-increments-accumulate.png"
+    },
+    {
+      "name": "mobile touch swipe and responsive layout",
+      "status": "PASS",
+      "screenshot": "mobile-touch-swipe-and-responsive-layout.png"
+    },
+    {
+      "name": "partial swipe cancel Escape and focus restoration",
+      "status": "PASS",
+      "screenshot": "partial-swipe-cancel-escape-and-focus-restoration.png"
+    },
+    {
+      "name": "small mobile ready actions fit the dialog",
+      "status": "PASS",
+      "screenshot": "small-mobile-ready-actions-fit-the-dialog.png"
+    },
+    {
+      "name": "popup blocked standard same tab fallback",
+      "status": "PASS",
+      "screenshot": "popup-blocked-standard-same-tab-fallback.png"
+    },
+    {
+      "name": "optional B absent preserves original tab",
+      "status": "PASS",
+      "screenshot": "optional-b-absent-preserves-original-tab.png"
+    },
+    {
+      "name": "no B allows a second distinct explicit action",
+      "status": "PASS",
+      "screenshot": "no-b-allows-a-second-distinct-explicit-action.png"
+    },
+    {
+      "name": "consent denial allows navigation without analytics",
+      "status": "PASS",
+      "screenshot": "consent-denial-allows-navigation-without-analytics.png"
+    },
+    {
+      "name": "verification failure then successful retry",
+      "status": "PASS",
+      "screenshot": "verification-failure-then-successful-retry.png"
+    },
+    {
+      "name": "returning session skips unnecessary challenge",
+      "status": "PASS",
+      "screenshot": "returning-session-skips-unnecessary-challenge.png"
+    },
+    {
+      "name": "visitor cookie existing expired and deleted",
+      "status": "PASS",
+      "screenshot": "visitor-cookie-existing-expired-and-deleted.png"
+    },
+    {
+      "name": "expired server session requires re-verification",
+      "status": "PASS",
+      "screenshot": "expired-server-session-requires-re-verification.png"
+    },
+    {
+      "name": "forged q yes and invalid session do not authorize",
+      "status": "PASS",
+      "screenshot": "forged-q-yes-and-invalid-session-do-not-authorize.png"
+    },
+    {
+      "name": "simulated cookie rejection fails closed",
+      "status": "PASS",
+      "screenshot": "simulated-cookie-rejection-fails-closed.png"
+    },
+    {
+      "name": "broken offer is observed as HTTP 404",
+      "status": "PASS",
+      "screenshot": "broken-offer-is-observed-as-http-404.png"
+    }
+  ],
+  "notRun": [
+    "Firefox",
+    "WebKit/Safari",
+    "production Turnstile widget",
+    "Meta Events Manager receipt",
+    "GTM published container",
+    "real advertiser conversion",
+    "real browser cookie-blocking policy (rejection was simulated)"
+  ]
+}

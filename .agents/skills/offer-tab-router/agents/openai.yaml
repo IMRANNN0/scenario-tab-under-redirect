@@ -1,0 +1,4 @@
+interface:
+  display_name: "Offer Tab Router"
+  short_description: "Explicit offer navigation with same-tab fallback"
+  default_prompt: "Use $offer-tab-router to open the offer in a new tab and optionally show Prelander B."

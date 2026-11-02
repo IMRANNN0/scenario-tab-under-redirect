@@ -1,0 +1,33 @@
+{
+  "offerUrl": null,
+  "optionalBUrl": null,
+  "navigationMode": "new-tab",
+  "swipeEnabled": true,
+  "recognition": {
+    "enabled": false,
+    "cookieName": null,
+    "lifetimeSeconds": null,
+    "refreshOnVisit": false,
+    "consentCategory": null
+  },
+  "verification": {
+    "sitekey": null,
+    "serverSecretEnvironmentName": "TURNSTILE_SECRET",
+    "expectedAction": null,
+    "allowedHostnames": [],
+    "allowedOrigins": [],
+    "sessionTtlSeconds": null,
+    "sessionStore": null
+  },
+  "tracking": {
+    "eventName": "Go2Offer",
+    "singleTrigger": "offer_navigation_requested",
+    "meaning": "An explicit eligible offer-navigation request, not a confirmed view or conversion",
+    "owner": "none",
+    "pixelId": null,
+    "gtmContainerId": null,
+    "windowsOnly": false,
+    "consentCategory": null,
+    "offerParameters": {}
+  }
+}

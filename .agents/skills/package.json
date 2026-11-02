@@ -1,0 +1,19 @@
+{
+  "name": "scenario-tab-under-redirect",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Seven modular Codex skills for affiliate funnel components",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "test": "node funnel-qa/scripts/run.mjs",
+    "test:unit": "node funnel-qa/scripts/run.mjs --unit-only",
+    "test:siteverify": "node funnel-qa/scripts/siteverify-probe.mjs",
+    "validate": "python funnel-qa/scripts/validate_library.py"
+  },
+  "devDependencies": {
+    "playwright": "1.62.1"
+  }
+}

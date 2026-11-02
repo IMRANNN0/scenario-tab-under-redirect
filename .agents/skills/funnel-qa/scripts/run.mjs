@@ -1,0 +1,13 @@
+import {spawnSync} from 'node:child_process';import {mkdir,writeFile} from 'node:fs/promises';import {fileURLToPath} from 'node:url';import path from 'node:path';
+import {runBrowser} from './browser.mjs';
+const root=fileURLToPath(new URL('../../',import.meta.url)),reportDir=fileURLToPath(new URL('../reports/',import.meta.url));
+await mkdir(reportDir,{recursive:true});
+const tests=['cookie-manager/assets/tests/cookies.test.mjs','gotooffer-tracking/assets/tests/tracking.test.mjs','cloudflare-verification/assets/tests/verification.test.mjs','funnel-qa/assets/tests/router.test.mjs'];
+const unit=spawnSync(process.execPath,['--test','--test-reporter=tap',...tests],{cwd:root,encoding:'utf8'});
+await writeFile(path.join(reportDir,'unit.tap'),unit.stdout+(unit.stderr||''));
+const unitSummary={status:unit.status===0?'PASS':'FAIL',passed:Number(unit.stdout.match(/# pass (\d+)/)?.[1]||0),failed:Number(unit.stdout.match(/# fail (\d+)/)?.[1]||0)};
+const browser=process.argv.includes('--unit-only')?{status:'NOT_RUN',reason:'Explicit --unit-only'}:await runBrowser({reportDir});
+const report={generatedAt:new Date().toISOString(),unit:unitSummary,browser};
+await writeFile(path.join(reportDir,'summary.json'),JSON.stringify(report,null,2));
+console.log(JSON.stringify({unit:unitSummary,browser:{status:browser.status,passed:browser.passed,cases:browser.cases}},null,2));
+if(unitSummary.status!=='PASS'||(!process.argv.includes('--unit-only')&&browser.status!=='PASS'))process.exitCode=1;

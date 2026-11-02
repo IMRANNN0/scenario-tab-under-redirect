@@ -1,0 +1,4 @@
+interface:
+  display_name: "Funnel Qa"
+  short_description: "Browser evidence and functional funnel checks"
+  default_prompt: "Use $funnel-qa to test the full funnel."

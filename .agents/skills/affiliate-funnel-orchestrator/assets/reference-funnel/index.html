@@ -1,0 +1,16 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Affiliate funnel local reference</title><link rel="stylesheet" href="/demo.css"><link rel="stylesheet" href="/modules/swipe.css"><script type="module" src="/app.mjs"></script></head>
+<body><main><p class="eyebrow">Local integration reference</p><h1>Prelander A fixture</h1>
+<p>A test harness with no live campaign, product claim or approved creative.</p>
+<p><label><input id="consent" type="checkbox"> Allow demo visitor recognition and analytics</label></p>
+<p id="visitor" role="status"></p><a id="cta" href="#verification">Continue to verification</a>
+<dialog id="verification" aria-labelledby="verify-title"><h2 id="verify-title">Verification before continuing</h2>
+<p id="mode"></p><div id="turnstile"></div><p id="verification-status" role="status" aria-live="polite"></p>
+<button id="retry" type="button">Retry verification</button>
+<section data-swipe hidden aria-labelledby="swipe-title"><h2 id="swipe-title">Open the offer</h2>
+<p>The offer opens in a new tab. This tab may show Prelander B.</p>
+<label for="offer-swipe">Slide to open the offer</label><input id="offer-swipe" data-swipe-range type="range" min="0" max="100" value="0" step="1">
+<button data-swipe-continue type="button">Open offer</button><button data-swipe-cancel type="button">Cancel</button>
+<p data-swipe-status role="status" aria-live="polite"></p></section><button id="close" type="button">Close</button></dialog>
+<p id="route-status" role="status"></p><a id="fallback-offer" hidden>Continue to the offer in this tab</a><details><summary>Local debug events</summary><pre id="debug"></pre></details>
+</main></body></html>

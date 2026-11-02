@@ -1,0 +1,4 @@
+interface:
+  display_name: "Gotooffer Tracking"
+  short_description: "Go2Offer events with consent and deduplication"
+  default_prompt: "Use $gotooffer-tracking to add Go2Offer tracking without duplicates."

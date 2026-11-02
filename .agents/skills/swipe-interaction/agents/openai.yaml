@@ -1,0 +1,4 @@
+interface:
+  display_name: "Swipe Interaction"
+  short_description: "Accessible swipe with a clear button alternative"
+  default_prompt: "Use $swipe-interaction to create a swipe-to-continue popup."

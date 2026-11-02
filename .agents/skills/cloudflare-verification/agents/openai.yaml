@@ -1,0 +1,4 @@
+interface:
+  display_name: "Cloudflare Verification"
+  short_description: "Real Turnstile checks and trusted server sessions"
+  default_prompt: "Use $cloudflare-verification to add real Turnstile verification."

@@ -1,0 +1,37 @@
+{
+  "date": "2026-11-02",
+  "component_skills": {
+    "status": "PASS",
+    "passed": 18,
+    "cases": 18,
+    "skills": [
+      "cookie-manager",
+      "gotooffer-tracking",
+      "swipe-interaction",
+      "offer-tab-router"
+    ]
+  },
+  "integration_skills": {
+    "status": "PASS",
+    "passed": 5,
+    "cases": 5,
+    "skills": [
+      "cloudflare-verification",
+      "affiliate-funnel-orchestrator",
+      "funnel-qa"
+    ]
+  },
+  "additional_mobile_recheck": {
+    "status": "PASS",
+    "passed": 2,
+    "cases": 2
+  },
+  "scope": "Independent isolated local/mocked forward tests; no deployments or real analytics",
+  "not_run": [
+    "Production Turnstile acceptance",
+    "Meta/GTM receipt",
+    "Advertiser conversion",
+    "Firefox/WebKit",
+    "Real mobile hardware"
+  ]
+}
