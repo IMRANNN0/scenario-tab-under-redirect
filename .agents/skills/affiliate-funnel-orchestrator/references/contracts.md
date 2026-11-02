@@ -17,7 +17,7 @@ Unverified -> official Turnstile -> POST backend -> Siteverify strict success/ac
 Verified session -> skip challenge while valid.
 Then show explicit Continue/swipe+button -> request offer navigation and dispatch one defined action event.
 The reference definition uses offer_navigation_requested and eventName Go2Offer. It measures an attempt, not receipt/view/installation/purchase. A blocked popup with same-tab fallback is still a request. Navigation exceptions must be separately reported. If another definition is approved, change the contract and tests together.
-Optional new tab -> original requests B. B views are independent; neither opening nor B proves active viewing. Do not dispatch the same Go2Offer from B load.
+Optional new tab -> original requests B. B views are independent; neither opening nor B proves active viewing. If the user explicitly chooses an A-originated B-load proxy instead of the reference offer-request definition, qualify the A-to-B handoff and dispatch once there, not again on A. Direct B visits and reloads do not count unless specifically requested.
 
 ## Data
 Go2Offer record: { event: configuredName, event_id: stableId, ...approvedOfferFields }.

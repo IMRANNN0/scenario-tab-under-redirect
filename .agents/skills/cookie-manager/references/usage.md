@@ -21,6 +21,11 @@ const header = serializeCookie('__Host-session', opaqueSessionId, {
 The last example needs a backend-owned session store. It does not create trusted state by itself.
 A one-year visitor cookie is separate from the shorter security-session TTL.
 A q=yes cookie can be an editable UI hint, never a verification decision.
+A remembered swipe is another editable hint. Use [swipe-memory.mjs](../assets/swipe-memory.mjs) only with an actual consent decision, a configured name and a specified lifetime (or an explicitly requested session cookie). Save after the gesture completes; determine separately whether later visits should skip it. Clear on withdrawal. Do not add tracking or navigation merely because a cookie exists.
+
+When the user requests this feature and no consent integration exists, a clearly worded, initially unchecked optional choice can request consent for the specified duration. The completion cookie may also record that the visitor chose to remember the completed gesture; write it only when the choice is checked and the gesture succeeds. A previously saved value represents that earlier choice, not trusted identity or human verification. Offer a way to forget it on a later visit, and do not skip an explicit offer CTA or modify tracking.
+
+If the user explicitly directs storage without adding a consent choice, the helper has a scoped `allowWithoutConsent` option. Leave `hasConsent` false in that mode, document that visitor consent was not collected, and do not apply the exception to unrelated projects. Never claim that the cookie establishes verification.
 A cookie identifies browser storage, not a person or all their devices.
 Without consent, recognition returns not-consented. With denied storage it returns storage-unavailable; it never claims persistence.
 Scope: omitted Domain is host-only; Domain can include matching subdomains, not an unrelated domain or public suffix. Path controls sending, not security isolation. Secure limits transport to HTTPS; it does not encrypt the stored value. SameSite controls cross-site sending. HttpOnly prevents script access and must be set by the server. Deletion must match name, domain and path.

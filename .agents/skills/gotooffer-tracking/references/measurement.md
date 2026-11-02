@@ -11,6 +11,8 @@ Prompt: `$gotooffer-tracking Add Go2Offer tracking without duplicates.`
 
 Reference template definition: Go2Offer means an eligible explicit offer-navigation request, after the server-confirmed session. It includes a same-tab fallback request. It is not confirmation of destination delivery or viewing. Do not reuse this definition if the user's approved contract differs.
 
+An explicitly approved alternative is a B-load proxy only for an A-to-B handoff: have A attach a fresh opaque event ID to the fixed approved B URL; on B require that marker and the expected A referrer, consume the marker before dispatch and guard same-tab replay. Restrict to the user-selected browser-reported Windows eligibility if requested. Do not count direct B, reloads or popup-blocked same-tab fallbacks; a later genuine A action gets a new ID. Empty referrers fail closed, so privacy settings can cause missed events. A client marker/referrer can be spoofed and does not authenticate the visitor, prove offer delivery, or provide durable exactly-once semantics. Use server-issued one-time state when verified provenance is required.
+
 ```js
 const tracker = createTracker({
   eventName: config.eventName, trigger: 'offer_navigation_requested',

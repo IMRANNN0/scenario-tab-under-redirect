@@ -3,8 +3,14 @@
 Seven modular Codex Agent Skills for affiliate prelanders and funnels, with reusable components, examples and functional/browser validation.
 
 ## For the team
-Clone this private repository, then open it in Codex. The seven skills live under .agents/skills/.
+Clone this repository, then open it in Codex. The seven skills live under .agents/skills/.
 To use them in another project, copy the seven skill directories into that project's .agents/skills/, retaining their sibling layout for the master and full QA harness. Start a new chat/reload discovery if needed.
+
+Or paste this prompt into Codex to install all seven skills from this repository:
+
+```text
+Use $skill-installer to install all seven skills from https://github.com/IMRANNN0/scenario-tab-under-redirect: affiliate-funnel-orchestrator, cloudflare-verification, cookie-manager, funnel-qa, gotooffer-tracking, offer-tab-router, and swipe-interaction. Each skill is under .agents/skills/<skill-name>. After installation, tell me to start a new Codex chat.
+```
 
 | Skill | Job |
 |---|---|
@@ -37,12 +43,12 @@ npm run test:siteverify
 Official skill validation requires the installed skill-creator quick_validate.py; pass its actual path with npm run validate -- --official-validator /path/to/quick_validate.py.
 
 ## Release evidence
-7/7 official skill checks, 41/41 unit tests, 18/18 Chromium scenarios and 3/3 official dummy-key Siteverify network probes passed. Independent invocation tests passed after demonstrated fixes.
+The original release recorded 7/7 official skill checks, 41/41 unit tests, 18/18 Chromium scenarios and 3/3 official dummy-key Siteverify network probes. See the validation commands for the current revision.
 Curated evidence is in evidence/; test reruns generate ignored reports under the QA skill.
 
 Production Turnstile credentials, Meta/GTM remote receipt, advertiser conversions, Firefox/WebKit and real mobile devices were not tested. The local memory session store, demo consent UI and local HTTP settings require production adaptation.
 
 ## Boundaries
 No production offer URL, account/Pixel ID or credential is supplied. A swipe is an interaction, a client cookie is untrusted, and Go2Offer/B navigation is not a conversion.
-No deployment or live campaign mutation is authorized by these skills. A private repository requires collaborators to be invited separately.
+No deployment or live campaign mutation is authorized by these skills.
 No open-source license is assumed; choose a license before broader redistribution.

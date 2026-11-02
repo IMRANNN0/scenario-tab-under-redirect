@@ -1,0 +1,23 @@
+.swipe-action {
+  --swipe-accent: #ff8a1e;
+  --swipe-offset: 0px;
+  --swipe-progress: 0;
+  --swipe-travel: 0px;
+  position: relative; isolation: isolate; display: block;
+  box-sizing: border-box; width: 100%; min-height: 68px; padding: 6px;
+  overflow: hidden; border: 1px solid #ffffff59; border-radius: 100px;
+  color: #fff; background: #0a0f18eb; font: inherit;
+  touch-action: pan-y; user-select: none; -webkit-user-select: none;
+  cursor: grab; -webkit-tap-highlight-color: transparent;
+}
+.swipe-action:focus-visible { outline: 3px solid var(--swipe-accent); outline-offset: 5px; }
+.swipe-action[data-dragging] { cursor: grabbing; }
+.swipe-action:disabled { cursor: default; }
+.swipe-action__fill { position: absolute; inset: 0 auto 0 0; width: var(--swipe-offset); background: var(--swipe-accent); opacity: .18; pointer-events: none; }
+.swipe-action__thumb { position: absolute; left: 6px; top: 6px; bottom: 6px; width: 54px; display: grid; place-items: center; border-radius: 50%; color: #11151a; background: var(--swipe-accent); transform: translateX(var(--swipe-offset)); pointer-events: none; }
+.swipe-action__thumb svg { width: 25px; height: 25px; }
+.swipe-action__label { display: flex; flex-direction: column; align-items: center; padding: 5px 12px 5px 54px; pointer-events: none; opacity: calc(1 - var(--swipe-progress) * 1.4); }
+.swipe-action__label strong { font: 700 16px/1.3 Inter, system-ui, sans-serif; }
+.swipe-action__label small { margin-top: 3px; color: #c9d2db; font: 500 12px/1.2 Inter, system-ui, sans-serif; }
+.swipe-action:not([data-dragging]) .swipe-action__thumb, .swipe-action:not([data-dragging]) .swipe-action__fill { transition: transform .18s ease, width .18s ease; }
+@media (prefers-reduced-motion: reduce) { .swipe-action, .swipe-action * { animation: none !important; transition: none !important; } }

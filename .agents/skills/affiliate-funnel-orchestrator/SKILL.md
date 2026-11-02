@@ -22,6 +22,6 @@ Read selected sibling SKILL.md files; do not load all for isolated work.
 ## Integrate
 Read [references/contracts.md](references/contracts.md). Reference path: CTA, backend session check, Turnstile only when unverified, Siteverify, protected session, fresh explicit Continue, single defined Go2Offer and navigation. Swipe is optional interaction, not verification.
 [assets/reference-funnel/server.mjs](assets/reference-funnel/server.mjs) integrates the sibling templates as a local learning/test harness. Adapt components into the real stack; do not deploy this local memory-store server unchanged.
-Never open a tab from an asynchronous verification callback. Preserve links/fallbacks. Do not dispatch on both swipe and B load. B views are independent; neither B nor verification proves advertiser conversion.
+Never open a tab from an asynchronous verification callback. Preserve links/fallbacks. For an explicitly requested A-to-B GoToOffer, carry a per-action handoff and qualify B before dispatch; do not fire separately on A. B views are independent; neither B nor verification proves advertiser conversion. See the conditional B-load contract in the tracking skill.
 ## Validate and deliver
 Invoke funnel-qa for selected components and the journey. Fix demonstrated failures, preserve NOT_RUN results, and supply configuration/reproduction instructions. Do not silently provision secrets, deploy or mutate campaigns.
