@@ -8,7 +8,8 @@ const cookies=browserCookies(document,{secure:location.protocol==='https:',path:
 let expiresAt=0,widget,checking=false,eventId,swipe;
 const debug=[],log=record=>{debug.push(record);$('#debug').textContent=JSON.stringify(debug,null,2);};
 const tracker=createTracker({transport:'gtm',hasConsent:()=>consent.checked});
-const router=createOfferRouter({offerUrl:config.offerUrl,bUrl:config.bUrl,allowHttp:location.hostname==='127.0.0.1',
+const router=createOfferRouter({offerUrl:config.offerUrl,bUrl:config.bUrl,originalTab:config.bUrl?'replace-with-b':'keep-a',
+  allowedBUrls:config.allowedBUrls || [],allowHttp:location.hostname==='127.0.0.1',
   onRequested:({eventId,outcome})=>{
     const result=tracker.dispatch({at:'offer_navigation_requested',eventId,parameters:{navigation_mode:outcome}});log({event:'Go2Offer',...result});
     if(result.status==='dispatched')fetch('/api/local-event',{method:'POST',headers:{'Content-Type':'application/json'},credentials:'same-origin',keepalive:true,

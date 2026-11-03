@@ -8,7 +8,7 @@ Seven independently invocable Codex Agent Skills for affiliate prelanders and fu
 | Go2Offer without duplicates | $gotooffer-tracking |
 | Swipe popup with button alternative | $swipe-interaction |
 | Real Turnstile and trusted sessions | $cloudflare-verification |
-| Offer tab plus optional B | $offer-tab-router |
+| Offer in new tab; replace original A with B | $offer-tab-router |
 | Test a component or full funnel | $funnel-qa |
 | Build an explicitly requested full funnel | $affiliate-funnel-orchestrator |
 
@@ -17,7 +17,7 @@ Example prompts:
 - `$gotooffer-tracking Add Go2Offer tracking without duplicates. Use our approved single trigger and CMP.`
 - `$swipe-interaction Create a swipe-to-continue popup with a keyboard/button alternative.`
 - `$cloudflare-verification Add real Turnstile verification to this existing backend.`
-- `$offer-tab-router Open the offer in a new tab and optionally show Prelander B in the original tab.`
+- `$offer-tab-router Open the offer in a new tab and replace the original Prelander A with B.`
 - `$funnel-qa Test the full funnel and report untested cases.`
 - `$affiliate-funnel-orchestrator Build the full affiliate funnel using only the required specialized skills.`
 

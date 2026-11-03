@@ -3,7 +3,7 @@ import http from 'node:http';
 import { readFile } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
 import { createVerificationService, memorySessionStore } from '../../../cloudflare-verification/assets/verification-server.mjs';
-export async function startDemo({ port = 0, testing = false, offerUrl, bPath = '/b',
+export async function startDemo({ port = 0, testing = false, offerUrl, bPath = '/b', allowedBUrls = [],
   sitekey = process.env.TURNSTILE_SITEKEY, secret = process.env.TURNSTILE_SECRET,
   fetchImpl, now = Date.now, sessionTtlSeconds = 1800, eventSink = [],
 } = {}) {
@@ -32,7 +32,7 @@ export async function startDemo({ port = 0, testing = false, offerUrl, bPath = '
     try {
       const url = new URL(req.url,origin), header = req.headers.cookie || '';
       if (req.method === 'POST' && req.headers.origin !== origin) return send(403,{error:'origin'});
-      if (url.pathname === '/api/config' && req.method === 'GET') return send(200,{ testing,sitekey,action:'affiliate_offer',offerUrl:offerUrl || `${origin}/offer`,bUrl:bPath });
+      if (url.pathname === '/api/config' && req.method === 'GET') return send(200,{ testing,sitekey,action:'affiliate_offer',offerUrl:offerUrl || `${origin}/offer`,bUrl:bPath,allowedBUrls });
       if (url.pathname === '/api/session' && req.method === 'GET') return send(200,await service.status(header));
       if (req.method === 'POST') {
         if (!String(req.headers['content-type']).startsWith('application/json')) return send(415,{error:'json-required'});

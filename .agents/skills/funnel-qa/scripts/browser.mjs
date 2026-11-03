@@ -3,6 +3,7 @@ import {mkdir,writeFile} from 'node:fs/promises';
 import {fileURLToPath} from 'node:url';
 import path from 'node:path';
 import assert from 'node:assert/strict';
+import {createServer} from 'node:http';
 import {startDemo} from '../../affiliate-funnel-orchestrator/assets/reference-funnel/server.mjs';
 const require=createRequire(import.meta.url);
 export async function runBrowser({reportDir=new URL('../reports/',import.meta.url)}={}) {
@@ -21,7 +22,7 @@ export async function runBrowser({reportDir=new URL('../reports/',import.meta.ur
     const demo=await startDemo({testing:true,now:()=>Date.now()+clockOffset,...options.server});
     const context=await browser.newContext({viewport:options.viewport||(options.mobile?{width:390,height:844}:{width:1366,height:900}),isMobile:Boolean(options.mobile),hasTouch:Boolean(options.mobile),reducedMotion:'reduce'});
     const pageErrors=[];context.on('page',p=>p.on('pageerror',error=>pageErrors.push(error.message)));
-    await context.route('**/*',route=>route.request().url().startsWith(demo.origin)?route.continue():route.abort());
+    await context.route('**/*',route=>[demo.origin,...(options.allowedOrigins||[])].some(origin=>route.request().url().startsWith(origin+'/'))?route.continue():route.abort());
     const page=await context.newPage();
     try {
       if(options.blocked)await context.addInitScript(()=>{window.open=()=>null;});
@@ -53,16 +54,27 @@ export async function runBrowser({reportDir=new URL('../reports/',import.meta.ur
     if(pass){await page.locator('#fixture-pass').click();await page.locator('[data-swipe]').waitFor({state:'visible'});}
   }
   async function eventually(check){for(let i=0;i<100;i++){if(check())return;await new Promise(r=>setTimeout(r,20));}assert.ok(check(),'Timed out waiting for local evidence');}
-  async function finish({page,context,demo},activation){
+  async function finish({page,context,demo},activation,bTarget=demo.origin+'/b'){
+    const historyBefore=await page.evaluate(()=>history.length);
     const popupPromise=context.waitForEvent('page');await activation();const offer=await popupPromise;
-    await offer.waitForURL(demo.origin+'/offer');await page.waitForURL(demo.origin+'/b');
+    await offer.waitForURL(demo.origin+'/offer');await page.waitForURL(bTarget);
     assert.equal(await offer.evaluate(()=>window.opener),null);assert.equal(context.pages().length,2);
+    assert.equal(await page.evaluate(()=>history.length),historyBefore,'B must replace the original A history entry');
     await eventually(()=>demo.eventSink.length===1);
     await page.reload();assert.equal(demo.eventSink.length,1);
-    const direct=await context.newPage();await direct.goto(demo.origin+'/b');assert.equal(demo.eventSink.length,1);await direct.close();
+    const direct=await context.newPage();await direct.goto(bTarget);assert.equal(demo.eventSink.length,1);await direct.close();
   }
   try{
     await scenario('desktop button new tab B and no reload duplicates',{},async t=>{await begin(t.page);await finish(t,()=>t.page.locator('[data-swipe-continue]').click());});
+    const bServer=createServer((req,res)=>{res.writeHead(200,{'Content-Type':'text/html'});res.end('<!doctype html><title>Cross-origin B fixture</title><h1>Cross-origin B fixture</h1>');});
+    await new Promise(resolve=>bServer.listen(0,'127.0.0.1',resolve));
+    const bOrigin=`http://127.0.0.1:${bServer.address().port}`,bUrl=bOrigin+'/b';
+    try {
+      await scenario('cross-origin B replaces A after offer opens',{server:{bPath:bUrl,allowedBUrls:[bUrl]},allowedOrigins:[bOrigin]},async t=>{
+        await begin(t.page);await finish(t,()=>t.page.locator('[data-swipe-continue]').click(),bUrl);
+        assert.equal(await t.page.locator('h1').innerText(),'Cross-origin B fixture');
+      });
+    } finally {await new Promise(resolve=>bServer.close(resolve));}
     await scenario('desktop completed pointer swipe',{},async t=>{await begin(t.page);const box=await t.page.locator('[data-swipe-range]').boundingBox();await finish(t,async()=>{await t.page.mouse.move(box.x+8,box.y+box.height/2);await t.page.mouse.down();await t.page.mouse.move(box.x+box.width-6,box.y+box.height/2,{steps:12});await t.page.mouse.up();});});
     await scenario('keyboard range and offer navigation',{},async t=>{await begin(t.page);await t.page.locator('[data-swipe-range]').focus();await finish(t,()=>t.page.keyboard.press('End'));});
     await scenario('keyboard arrow increments accumulate',{},async t=>{await begin(t.page);await t.page.locator('[data-swipe-range]').focus();await t.page.keyboard.press('ArrowRight');await t.page.keyboard.press('ArrowRight');assert.equal(await t.page.locator('[data-swipe-range]').inputValue(),'2');assert.equal(t.demo.eventSink.length,0);});
@@ -91,7 +103,7 @@ export async function runBrowser({reportDir=new URL('../reports/',import.meta.ur
       await t.page.locator('[data-swipe-cancel]').click();assert.equal(await t.page.locator('#verification').isVisible(),false);
     });
     await scenario('popup blocked standard same tab fallback',{blocked:true},async t=>{await begin(t.page);await t.page.locator('[data-swipe-continue]').click();await t.page.waitForURL(t.demo.origin+'/offer');assert.equal(t.context.pages().length,1);await eventually(()=>t.demo.eventSink.length===1);});
-    await scenario('optional B absent preserves original tab',{server:{bPath:null}},async t=>{await begin(t.page);const promise=t.context.waitForEvent('page');await t.page.locator('[data-swipe-continue]').click();const offer=await promise;await offer.waitForURL(t.demo.origin+'/offer');assert.equal(t.page.url(),t.demo.origin+'/');await eventually(()=>t.demo.eventSink.length===1);});
+    await scenario('explicit keep-A mode preserves original tab',{server:{bPath:null}},async t=>{await begin(t.page);const promise=t.context.waitForEvent('page');await t.page.locator('[data-swipe-continue]').click();const offer=await promise;await offer.waitForURL(t.demo.origin+'/offer');assert.equal(t.page.url(),t.demo.origin+'/');await eventually(()=>t.demo.eventSink.length===1);});
     await scenario('no B allows a second distinct explicit action',{server:{bPath:null}},async t=>{
       await begin(t.page);
       for(let i=0;i<2;i++){

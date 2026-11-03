@@ -7,7 +7,7 @@ Prompt: `$funnel-qa Test the full funnel.`
 | Tracking | one trigger/owner, stable ID, duplicate/reentrant suppression, SDK error, consent/eligibility |
 | Swipe | pointer/touch full and partial drags; tap/Enter/Space alternative (integrated or separate); pointercancel; repeat prevention; Escape/backdrop or approved close controls; dialog focus; mobile overflow |
 | Verification | missing/invalid token, hostname/action/origin, success/failure, replay, timeout, server expiry, rotation/revoke, forged cookie |
-| Router | offer URL/query, new tab, opener null, B/no B, blocked same-tab fallback, modifiers, exception, actual broken response |
+| Router | actual offer URL/query, exactly two tabs with original A replaced by B, cross-origin B allowlist, missing B rejected, opener null, explicit no-B mode, blocked same-tab fallback, modifiers, exception, actual broken response |
 | Combined | no automatic offers, session skip/rechallenge, only one Go2Offer, no B reload event, no event without consent |
 
 Run from the skills root:

@@ -17,11 +17,11 @@ Read selected sibling SKILL.md files; do not load all for isolated work.
 | Measurement/deduplication | [gotooffer-tracking](../gotooffer-tracking/SKILL.md) |
 | Optional swipe/button UI | [swipe-interaction](../swipe-interaction/SKILL.md) |
 | Real challenge/trusted sessions | [cloudflare-verification](../cloudflare-verification/SKILL.md) |
-| Offer/optional B navigation | [offer-tab-router](../offer-tab-router/SKILL.md) |
+| Offer tab and original A-to-B navigation | [offer-tab-router](../offer-tab-router/SKILL.md) |
 | Component/integrated checks | [funnel-qa](../funnel-qa/SKILL.md) |
 ## Integrate
 Read [references/contracts.md](references/contracts.md). Reference path: CTA, backend session check, Turnstile only when unverified, Siteverify, protected session, fresh explicit Continue, single defined Go2Offer and navigation. Swipe is optional interaction, not verification.
 [assets/reference-funnel/server.mjs](assets/reference-funnel/server.mjs) integrates the sibling templates as a local learning/test harness. Adapt components into the real stack; do not deploy this local memory-store server unchanged.
-Never open a tab from an asynchronous verification callback. Preserve links/fallbacks. For an explicitly requested A-to-B GoToOffer, carry a per-action handoff and qualify B before dispatch; do not fire separately on A. B views are independent; neither B nor verification proves advertiser conversion. See the conditional B-load contract in the tracking skill.
+For the tab-under scenario, the final user action requests the offer in a new tab and replaces original A with B; do not silently keep A. Identify the actual B page or request its URL if missing. Explicit user choices for other modes take precedence. Never open a tab from an asynchronous verification callback. Preserve links/fallbacks. For an explicitly requested A-to-B GoToOffer, carry a per-action handoff and qualify B before dispatch; do not fire separately on A. B views are independent; neither B nor verification proves advertiser conversion. See the conditional B-load contract in the tracking skill.
 ## Validate and deliver
 Invoke funnel-qa for selected components and the journey. Fix demonstrated failures, preserve NOT_RUN results, and supply configuration/reproduction instructions. Do not silently provision secrets, deploy or mutate campaigns.

@@ -25,6 +25,8 @@ start a new Claude Code session and find the skills with /skills.
 
 The installer requires Node.js and Git. For one project only, run it with `--project` from that project's root using the install script's path. To invoke a skill in Claude Code, use e.g. `/gotooffer-tracking`. Claude Code discovers the personal and project skill directories described in its [skills documentation](https://code.claude.com/docs/en/skills).
 
+Already installed an older copy? Skills do not update automatically, and this installer refuses to overwrite them. Back up and deliberately update the existing folders from this repository, then start a new session. For the updated router, the tab-under scenario requires a B destination; choose `originalTab: 'keep-a'` only for an explicitly requested offer-only variant.
+
 ## Claude web and desktop
 
 Download [the Claude upload bundle](releases/affiliate-funnel-claude.zip). In Claude, enable file creation/code execution if needed, go to **Customize > Skills**, choose **Create skill > Upload a skill**, and upload the ZIP. This creates one combined `affiliate-funnel-claude` skill that contains all seven component workflows. The bundle contains instructions and examples; access to local projects and tools depends on the Claude environment. See [Claude's skill upload guide](https://support.claude.com/en/articles/12512180-use-skills-in-claude).
@@ -35,7 +37,7 @@ Download [the Claude upload bundle](releases/affiliate-funnel-claude.zip). In Cl
 | $gotooffer-tracking | One defined Go2Offer trigger, consent and deduplication |
 | $swipe-interaction | Accessible swipe with a button alternative |
 | $cloudflare-verification | Real Turnstile, server validation and trusted sessions |
-| $offer-tab-router | Explicit offer navigation, optional B and same-tab fallback |
+| $offer-tab-router | Offer in a new tab, replace A with B, with same-tab fallback |
 | $funnel-qa | Functional tests, browser checks, screenshots and reports |
 | $affiliate-funnel-orchestrator | Select and integrate only the needed skills |
 
